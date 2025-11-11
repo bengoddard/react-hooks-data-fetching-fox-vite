@@ -21,18 +21,7 @@ function FoxImage() {
       .catch(error => console.log(error));
   }
 
-  useEffect(() => {
-    fetch(API_URL)
-      .then(response => {
-        if(!response.ok) { throw new Error("Failed to fetch image"); }
-        return response.json();
-      })
-      .then(data => {
-        setImage(data.image);
-        setLoading(false);
-      })
-      .catch(error => console.log(error));
-  }, []);
+  useEffect(fetchNewImage, []);
 
   return (
     <div>
